@@ -18,7 +18,7 @@ class ProductController extends Controller
 
     public function store(Request $request) {
         $validated = $request->validate([
-            'name' => 'required|unique:products|max:255',
+            'name' => 'required|max:255',
             'quantity' => 'required|integer',
             'description' => 'required|max:511',
         ]);
@@ -47,9 +47,9 @@ class ProductController extends Controller
 
     public function update(Request $request, Product $product) {
         $validated = $request->validate([
-            'name' => 'required|unique:products|max:255',
+            'name' => 'required|max:255',
             'quantity' => 'required|integer',
-            'description' => 'required',
+            'description' => 'required|max:511',
         ]);
 
         $product->update($validated);
